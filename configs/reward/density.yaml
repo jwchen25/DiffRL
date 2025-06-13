@@ -1,0 +1,17 @@
+# reward for target density (single property optimization)
+_target_: rewards.reward.Reward
+
+root_dir: rewards
+
+prop_cfg:
+  - name: density
+    calculator:
+      _target_: rewards.calculators.PyMatGen
+      root_dir: rewards/density
+      task: density
+    # target: 2.5 (float), descending, ascending
+    target: 12.0
+    minv: 0.0
+    maxv: 4.0
+
+reward_threshold: 0.875

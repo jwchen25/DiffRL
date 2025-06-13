@@ -1,0 +1,19 @@
+_target_: pipeline.hill_climb.HillClimb
+
+# global
+rl_epoch: ${rl_epoch}
+device: ${device}
+
+# saving
+save_dir: ./
+save_freq: 100  # for agent model
+
+# sampling
+sample_cfg: ${sample_cfg}
+
+topk_ratio: 0.4
+
+# finetune
+finetune_cfg:
+  batch_size: ${eval_size}
+  epochs: 8

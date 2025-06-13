@@ -1,0 +1,1 @@
+from pipeline.filters.opt_filter import OptFilter, invalid_filter

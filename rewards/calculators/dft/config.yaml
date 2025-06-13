@@ -1,0 +1,27 @@
+machine: remote
+scheduler: slurm
+hostname: jed.hpc.epfl.ch
+username: junchen
+port: 22
+remote_dir: "/scratch/junchen/dft_score/bandgap2"
+scheduler_cmd: |
+  #!/bin/bash
+  #SBATCH -N 1
+  #SBATCH -n 1
+  #SBATCH -c 72
+  #SBATCH -t 0:10:0
+  #SBATCH -p standard
+  #SBATCH -J dft_score
+
+  module load intel/2021.6.0 intel-oneapi-mpi/2021.6.0 intel-oneapi-mkl/2022.1.0
+  export PATH="/home/junchen/software/vasp/v632/bin":$PATH
+  ulimit -s unlimited
+
+  source ~/software/miniconda3/bin/activate dft_score_mat
+
+vasp_settings:
+  VASP_CMD: "mpirun -np 72 vasp_std"
+  VASP_INCAR_UPDATES:
+    KPAR: 18
+    EDIFFG: -0.05
+    PREC: Normal

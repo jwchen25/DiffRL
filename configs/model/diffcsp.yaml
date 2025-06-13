@@ -1,0 +1,14 @@
+_target_: models.suite.DiffCSPSuite
+
+model_name: diffcsp
+model_path: /home/jwchen/work/code/MatterRL/ckpts/diffcsp_mp20
+device: ${device}
+
+sample_cfg:
+  batch_size: ${calc:'${eval_size} * 12'}
+  num_batches: 1
+
+finetune_cfg:
+  batch_size: ${eval_size}
+  timesteps: 1000
+  lr: 0.0001
